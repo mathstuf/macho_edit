@@ -38,11 +38,13 @@ void MachOArch::swap_mach_header(struct mach_header *mh) const {
 	}
 }
 
-std::string MachOArch::description() const {
-	std::string name = cpu_name(fat_arch.cputype, fat_arch.cpusubtype);
+std::string MachOArch::name() const {
+	return cpu_name(fat_arch.cputype, fat_arch.cpusubtype);
+}
 
+std::string MachOArch::description() const {
 	std::ostringstream o;
-	o << name << " arch (offset 0x" << std::hex << fat_arch.offset << ")";
+	o << name() << " arch (offset 0x" << std::hex << fat_arch.offset << ")";
 	return o.str();
 }
 

@@ -20,6 +20,7 @@ public:
 
 	void swap_mach_header(struct mach_header *mh) const;
 
+	std::string name() const;
 	std::string description() const;
 	void print_load_commands() const;
 
