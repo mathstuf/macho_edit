@@ -1,0 +1,23 @@
+add_executable(macho_edit)
+target_sources(macho_edit
+  PRIVATE
+    cpuinfo.cpp
+    fileutils.cpp
+    load_command.cpp
+    macho.cpp
+    macho_arch.cpp
+    magicnames.cpp
+    main.cpp
+    menu.cpp
+  PRIVATE
+    FILE_SET HEADERS FILES
+      cpuinfo.h
+      fileutils.h
+      load_command.h
+      macho.h
+      macho_arch.h
+      magicnames.h
+      menu.h)
+target_compile_features(macho_edit
+  PRIVATE
+    cxx_std_11)
