@@ -17,6 +17,8 @@ MachO::MachO() {
 }
 
 MachO::MachO(const char *filename) {
+	path = filename;
+
 	file = fopen(filename, "r+");
 	if(!file) {
 		throw "Couldn't open file!";

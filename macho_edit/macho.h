@@ -12,6 +12,7 @@
 class MachO {
 public:
 // Fields
+	std::string path;
 	std::FILE *file;
 	int fd;
 	uint32_t file_size;
