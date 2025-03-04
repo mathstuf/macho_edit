@@ -1,5 +1,5 @@
-add_executable(macho_edit)
-target_sources(macho_edit
+add_library(macho_edit-lib OBJECT)
+target_sources(macho_edit-lib
   PRIVATE
     cpuinfo.cpp
     fileutils.cpp
@@ -7,9 +7,7 @@ target_sources(macho_edit
     macho.cpp
     macho_arch.cpp
     magicnames.cpp
-    main.cpp
-    menu.cpp
-  PRIVATE
+  PUBLIC
     FILE_SET HEADERS FILES
       cpuinfo.h
       fileutils.h
@@ -18,6 +16,18 @@ target_sources(macho_edit
       macho_arch.h
       magicnames.h
       menu.h)
-target_compile_features(macho_edit
-  PRIVATE
+target_compile_features(macho_edit-lib
+  PUBLIC
     cxx_std_11)
+
+add_executable(macho_edit)
+target_sources(macho_edit
+  PRIVATE
+    main.cpp
+    menu.cpp
+  PRIVATE
+    FILE_SET HEADERS FILES
+      menu.h)
+target_link_libraries(macho_edit
+  PRIVATE
+    macho_edit-lib)
