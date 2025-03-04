@@ -20,6 +20,21 @@ target_compile_features(macho_edit-lib
   PUBLIC
     cxx_std_11)
 
+add_executable(macho_edit_ni)
+target_sources(macho_edit_ni
+  PRIVATE
+    main_ni.cpp
+    command.cpp
+  PRIVATE
+    FILE_SET HEADERS FILES
+      command.h)
+target_link_libraries(macho_edit_ni
+  PRIVATE
+    macho_edit-lib)
+target_compile_features(macho_edit_ni
+  PUBLIC
+    cxx_std_20)
+
 add_executable(macho_edit)
 target_sources(macho_edit
   PRIVATE
